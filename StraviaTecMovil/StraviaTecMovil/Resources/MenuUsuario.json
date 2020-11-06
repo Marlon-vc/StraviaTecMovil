@@ -1,0 +1,17 @@
+[
+    {
+        "Title": "Mi Perfil",
+        "Icon": "icon.png",
+        "Target": "StraviaTecMovil.Views.MainPage"
+    },
+    {
+        "Title": "Eventos inscritos",
+        "Icon": "icon.png",
+        "Target": "StraviaTecMovil.Views.MainPage"
+    },
+    {
+        "Title": "Grupos",
+        "Icon": "icon.png",
+        "Target": "StraviaTecMovil.Views.MainPage"
+    }
+]

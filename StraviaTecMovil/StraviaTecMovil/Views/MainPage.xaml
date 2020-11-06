@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="StraviaTecMovil.Views.MainPage"
+                  xmlns:items="clr-namespace:StraviaTecMovil.Models">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menú">
+            <StackLayout Orientation="Vertical">
+
+                <Frame Margin="0"
+                       CornerRadius="0"
+                       HeightRequest="50">
+                    <Label Text="Bienvenid@ usuario"
+                           TextColor="#2b2b2b"
+                           FontSize="Large"/>
+
+                </Frame>
+
+                <ListView ItemsSource="{Binding Model.MenuItems}"
+                          ItemSelected="ListView_ItemTapped"
+                          RowHeight="50">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                         x:DataType="items:MenuItem">
+                                    <Image Source="{Binding Icon}"/>
+                                    <Label Text="{Binding Title}"
+                                           VerticalOptions="Center"
+                                           FontSize="Medium"
+                                           Padding="20,0,0,0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>

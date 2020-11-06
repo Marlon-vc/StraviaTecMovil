@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StraviaTecMovil.Views.LoginPage"
+             xmlns:context="clr-namespace:StraviaTecMovil.ViewModels"
+             x:DataType="context:LoginViewModel"
+             Title="Iniciar Sesión">
+
+    <StackLayout Orientation="Vertical"
+                 Padding="25">
+
+        <Label Text="Usuario"
+               FontSize="Medium"/>
+        <Entry Text="{Binding Model.User}"
+               Margin="0,0,0,15"
+               ReturnType="Next"/>
+
+        <Label Text="Contraseña"
+               FontSize="Medium"/>
+        <Entry Text="{Binding Model.Pass}"
+               Margin="0,0,0,15"
+               ReturnType="Done"
+               IsPassword="True"/>
+
+        <Button Text="Ingresar"
+                VerticalOptions="EndAndExpand"
+                Command="{Binding LoginCommand}"/>
+
+    </StackLayout>
+    
+</ContentPage>
