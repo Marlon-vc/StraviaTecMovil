@@ -1,4 +1,7 @@
-﻿using StraviaTecMovil.Helpers;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using StraviaTecMovil.Helpers;
+using StraviaTecMovil.Models;
+using StraviaTecMovil.Services.SQLite;
 using StraviaTecMovil.ViewModels;
 using StraviaTecMovil.Views;
 using System;
@@ -10,6 +13,27 @@ namespace StraviaTecMovil
 {
     public partial class App : Application
     {
+        static SqliteService database;
+
+        public static SqliteService SqliteCon
+        {
+            get
+            {
+                if (database == null)
+                {
+                    try
+                    {
+                        database = new SqliteService();
+                    } catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    
+                }
+
+                return database;
+            }
+        }
         public App()
         {
             InitializeComponent();

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using StraviaTecMovil.Helpers;
 using StraviaTecMovil.Helpers.Network;
+using StraviaTecMovil.Models;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -10,7 +11,7 @@ namespace StraviaTecMovil.ViewModels
 {
     public class LoginViewModel
     {
-        public Models.LoginModel Model { get; set; }
+        public LoginModel Model { get; set; }
         public Command LoginCommand { get; set; }
         private INavigation Nav { get; set; }
         private IUserDialogs Dialogs { get; set; }
@@ -18,7 +19,7 @@ namespace StraviaTecMovil.ViewModels
         public LoginViewModel(INavigation nav)
         {
             Nav = nav;
-            Model = new Models.LoginModel();
+            Model = new LoginModel();
             Dialogs = UserDialogs.Instance;
             LoginCommand = new Command(_ => OnLogin().ConfigureAwait(false));
         }
