@@ -6,26 +6,37 @@
              x:DataType="context:LoginViewModel"
              Title="Iniciar Sesión">
 
-    <StackLayout Orientation="Vertical"
-                 Padding="25">
+    <Grid>
+        <Image Source="background3.jpg" Aspect="AspectFill"/>
 
-        <Label Text="Usuario"
-               FontSize="Medium"/>
-        <Entry Text="{Binding Model.User}"
+        <StackLayout Orientation="Vertical">
+
+            <StackLayout VerticalOptions="CenterAndExpand"
+                     BackgroundColor="#80000000"
+                     Padding="25"
+                     Margin="20, 0">
+                <Label Text="Usuario"
+               FontSize="Large"/>
+                <Entry Text="{Binding Model.User}"
                Margin="0,0,0,15"
                ReturnType="Next"/>
 
-        <Label Text="Contraseña"
-               FontSize="Medium"/>
-        <Entry Text="{Binding Model.Pass}"
+                <Label Text="Contraseña"
+               FontSize="Large"/>
+                <Entry Text="{Binding Model.Pass}"
                Margin="0,0,0,15"
                ReturnType="Done"
                IsPassword="True"/>
+            </StackLayout>
 
-        <Button Text="Ingresar"
-                VerticalOptions="EndAndExpand"
-                Command="{Binding LoginCommand}"/>
+            <Button Text="Ingresar"
+                    Command="{Binding LoginCommand}"
+                    Margin="25"
+                    Style="{StaticResource Key=PrimaryButton}"/>
 
-    </StackLayout>
+        </StackLayout>
+    </Grid>
+
+    
     
 </ContentPage>
