@@ -19,7 +19,7 @@ namespace StraviaTecMovil.Helpers
 
     public static class Urls
     {
-        public static string Usuarios => "http://192.168.0.18:5001/api/Usuarios";
-        public static string Login => "http://192.168.0.18:5001/api/Login";
+        public static string Usuarios => "http://192.168.0.3:5001/api/Usuarios";
+        public static string Login => "http://192.168.0.3:5001/api/Login";
     }
 }
