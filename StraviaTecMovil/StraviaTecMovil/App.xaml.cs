@@ -38,14 +38,16 @@ namespace StraviaTecMovil
         {
             InitializeComponent();
 
-            MainPage = LoggedIn() ? (Page)new MainPage() : new NavigationPage(new LoginPage());
+            //MainPage = LoggedIn() ? (Page)new MainPage() : new NavigationPage(new LoginPage());
+            MainPage = LoggedIn() ? (Page)new HomePage() : new NavigationPage(new LoginPage());
 
             Messaging.Subscribe<LoginViewModel>(this, Constants.LoginDone, OnLoginDone);
         }
 
         private void OnLoginDone(LoginViewModel sender)
         {
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new HomePage();
         }
 
         private bool LoggedIn()

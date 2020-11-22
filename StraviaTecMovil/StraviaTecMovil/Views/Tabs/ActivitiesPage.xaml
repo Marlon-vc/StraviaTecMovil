@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="StraviaTecMovil.Views.Tabs.ActivitiesPage"
+            xmlns:items="clr-namespace:StraviaTecMovil.Models"
+            Title="Actividades"
+            IconImageSource="list.png">
+
+    <ContentPage
+        Title="Locales">
+        <RefreshView
+        IsRefreshing="{Binding Model.IsRefreshingLocal}"
+        Command="{Binding OnRefreshLocalCommand}">
+            <StackLayout>
+                <CollectionView>
+                    <CollectionView.EmptyView>
+                        <StackLayout 
+                        Orientation="Vertical"
+                        Padding="30">
+                            <Label
+                            FontSize="Medium"
+                            Text="No hay actividades en este dispositivo"
+                            HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell x:DataType="items:Actividad">
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button
+                    Text="Agregar"
+                    VerticalOptions="End"
+                    HorizontalOptions="EndAndExpand"
+                    Command="{Binding OnAddActivityCommand}"/>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage>
+
+    <ContentPage
+        Title="Todas">
+        <RefreshView
+        IsRefreshing="{Binding Model.IsRefreshingAll}"
+        Command="{Binding OnRefreshAllCommand}">
+            <StackLayout>
+                <CollectionView>
+                    <CollectionView.EmptyView>
+                        <StackLayout 
+                        Orientation="Vertical"
+                        Padding="30">
+                            <Label
+                            FontSize="Medium"
+                            Text="No se encontraron actividades"
+                            HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell x:DataType="items:Actividad">
+                                <StackLayout>
+                                    <Label 
+                                        Text="{Binding Duracion, StringFormat='Duración: {0}'}"/>
+                                    <Label 
+                                        Text="{Binding Kilometros, StringFormat='Kilometros: {0}'}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage>
+    
+</TabbedPage>

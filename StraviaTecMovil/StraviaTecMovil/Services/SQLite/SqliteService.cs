@@ -7,6 +7,7 @@ using System;
 using System.Threading;
 using Xamarin.Forms.PlatformConfiguration;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StraviaTecMovil.Services.SQLite
 {
@@ -21,7 +22,8 @@ namespace StraviaTecMovil.Services.SQLite
         {
             //var dbPath = DependencyService.Get<IPathService>().GetDatabasePath();
             //string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "StraviaTec.sqlite");
-            string dbPath = Path.Combine("/storage/emulated/0/Android/data/com.companyname.straviatecmovil/files/", "StraviaTec.sqlite");
+            //string dbPath = Path.Combine("/storage/emulated/0/Android/data/com.companyname.straviatecmovil/files/", "StraviaTec.sqlite");
+            string dbPath = Path.Combine("/storage/emulated/0/Android/data/com.computadores.straviatecmovil/files/", "StraviaTec.sqlite");
 
             //var connectionString = new SQLiteConnectionString($"{dbPath};foreign keys=true;", storeDateTimeAsTicks: false);
 
@@ -114,9 +116,38 @@ namespace StraviaTecMovil.Services.SQLite
 
         public Recorrido GetRecorrido(int id) => _sqlCon.Table<Recorrido>().FirstOrDefault(r => r.Id == id);
 
+        public async Task<int> InsertRecorridoAsync(Recorrido recorrido)
+        {
+            await readLock.WaitAsync();
+
+            int pk = -1;
+
+            try
+            {
+                int rowId = 0;
+                _sqlCon.RunInTransaction(() =>
+                {
+                    _sqlCon.Insert(recorrido);
+                    rowId = _sqlCon.ExecuteScalar<int>("SELECT last_insert_rowid()");
+                });
+
+                pk = _sqlCon.ExecuteScalar<int>("SELECT Id FROM Recorrido WHERE rowid = ?", rowId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                readLock.Release();
+            }
+
+            return pk;
+        }
+
         public void InsertRecorrido(Recorrido item)
         {
-             readLock.Wait();
+            readLock.Wait();
             try
             {
                 var recorrido =  _sqlCon.Table<Recorrido>().FirstOrDefault(a => a.Id == item.Id);

@@ -11,32 +11,46 @@
 
         <StackLayout Orientation="Vertical">
 
-            <StackLayout VerticalOptions="CenterAndExpand"
-                     BackgroundColor="#80000000"
-                     Padding="25"
-                     Margin="20, 0">
-                <Label Text="Usuario"
-               FontSize="Large"/>
-                <Entry Text="{Binding Model.User}"
-               Margin="0,0,0,15"
-               ReturnType="Next"/>
+            <Frame 
+                BackgroundColor="#90000000"
+                Margin="20,0"
+                CornerRadius="15"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Label 
+                        Text="Usuario"
+                        FontSize="Medium"/>
+                    <Entry 
+                        Text="{Binding Model.User}"
+                        Margin="0,0,0,15"
+                        ReturnType="Next"/>
 
-                <Label Text="Contraseña"
-               FontSize="Large"/>
-                <Entry Text="{Binding Model.Pass}"
-               Margin="0,0,0,15"
-               ReturnType="Done"
-               IsPassword="True"/>
-            </StackLayout>
+                    <Label 
+                        Text="Contraseña"
+                        FontSize="Medium"/>
+                    <Entry 
+                        Text="{Binding Model.Pass}"
+                        Margin="0,0,0,15"
+                        ReturnType="Done"
+                        IsPassword="True"/>
 
-            <Button Text="Ingresar"
-                    Command="{Binding LoginCommand}"
-                    Margin="25"
-                    Style="{StaticResource Key=PrimaryButton}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button
+                            Text="Registrarse"
+                            HorizontalOptions="EndAndExpand"
+                            Style="{StaticResource SecondaryButton}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
 
+            <Button 
+                Text="Ingresar"
+                Command="{Binding LoginCommand}"
+                Margin="35, 20"
+                Style="{StaticResource Key=PrimaryButton}"/>
         </StackLayout>
     </Grid>
 
-    
-    
+
+
 </ContentPage>

@@ -11,8 +11,11 @@
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
-            
-            
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White" />
+            </Style>
         </ResourceDictionary>
         
     </Application.Resources>
