@@ -1,14 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<TabbedPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="StraviaTecMovil.Views.HomePage"
+    xmlns:tabs="clr-namespace:StraviaTecMovil.Views.Tabs"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    android:TabbedPage.ToolbarPlacement="Bottom"
     Title="Feria Virtual">
     
     <!--Pages can be added as references or inline-->
-    <StackLayout Orientation="Vertical"
-                 Padding="30">
-        <Label Text="Bienvenido a StraviaTec, abre el menú para iniciar."
-               FontSize="Large"/>
-    </StackLayout>
-</ContentPage>
+    <!--<views:MainPage />-->
+    <!--<tabs:ActivitiesPage 
+        Title="Actividades"
+        IconImageSource="list.png"/>
+
+    <tabs:RegisterActivityPage 
+        Title="Registrar"
+        IconImageSource="track.png"/>
+
+    <tabs:ProfilePage 
+        Title="Mi Perfil"
+        IconImageSource="user.png"/>-->
+
+</TabbedPage>

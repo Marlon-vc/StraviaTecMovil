@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StraviaTecMovil.Views.Tabs.RegisterActivityPage"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:helpers="clr-namespace:StraviaTecMovil.Helpers"
+             Title="Registrar"
+             IconImageSource="track.png"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout
+        Orientation="Vertical">
+
+        <maps:Map
+            x:Name="viewMap"
+            IsShowingUser="True"
+            VerticalOptions="FillAndExpand"/>
+
+        <Grid 
+            Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Tiempo"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="{Binding Model.ElapsedTime}"
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"/>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Distancia"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="15 KM"
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"/>
+
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="{Binding Model.CurrentColspan}"
+                Text="{Binding Model.CurrentAction}"
+                Command="{Binding CurrentActionCommand}"/>
+
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="Finalizar"
+                IsVisible="{Binding Model.OnActivity}"
+                Command="{Binding FinishActivityCommand}"/>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>
